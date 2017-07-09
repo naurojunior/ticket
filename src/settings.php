@@ -7,6 +7,16 @@ return [
         'renderer' => [
             'template_path' => __DIR__ . '/../templates/',
         ],
+        'db' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => 'ticket',
+            'username' => 'root',
+            'password' => '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ]
         // Monolog settings
         /*'logger' => [
             'name' => 'slim-app',
