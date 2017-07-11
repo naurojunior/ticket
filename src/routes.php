@@ -6,3 +6,6 @@ $app->group('', function () {
 
     $this->get('/users/{id_user}/tickets', '\Controller\TicketController:showUserTicket');
 });
+
+$app->put('/login', '\Controller\UserController:login');
+$app->put('/jwt', '\Controller\UserController:jwt');
