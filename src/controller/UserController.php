@@ -5,8 +5,7 @@ namespace Controller;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use App\User;
-use Firebase\JWT\JWT;
-use Utils\JWTUtils as JWTUtils;
+use Utils\TokenAuth;
 
 class UserController {
     /**
@@ -27,24 +26,8 @@ class UserController {
         $password =  $request->getParsedBody()['password'];
 
         $userReturn = User::where('user',$user)->where('password',$password)->first();
-
-        $key = JWTUtils::KEY;
-        $token = array(
-            "iss" => "http://example.org",
-            "aud" => "http://example.com",
-            "user_id" => $userReturn->id
-        );
-        $jwt = JWT::encode($token, $key);
-
-        return $response->withJson($jwt);
-    }
-
-    public function jwt(Request $request, Response $response, $args) {
-        $string = $request->getParsedBody()['jwt'];
-        $key = \JWTUtils::KEY;
-        $return = JWT::decode($string, $key, array('HS256'));
-        print_r($return);
-        die();
+        $token = TokenAuth::generate($userReturn);
+        return $response->withJson($token->token);
     }
 
 }

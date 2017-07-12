@@ -16,5 +16,9 @@ class User extends Model
 
     protected $guarded = ['id'];
 
+    public function tokens(){
+        return $this->hasMany('App\Token');
+    }
+
 
 }

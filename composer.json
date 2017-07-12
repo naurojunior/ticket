@@ -2,14 +2,14 @@
     "require": {
         "slim/slim": "^3.0",
         "monolog/monolog": "^1.23",
-        "illuminate/database": "~5.1",
-        "firebase/php-jwt": "^5.0"
+        "illuminate/database": "~5.1"
     },
     "autoload": {
         "psr-4": {
             "App\\": "src/model",
             "Controller\\" : "src/controller",
-            "Utils\\" : "src/utils"
+            "Utils\\" : "src/utils",
+            "Middleware\\" : "src/middleware"
         }
     }
 }
